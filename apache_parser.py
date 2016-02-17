@@ -2,6 +2,8 @@
 
 import re
 import sys
+import time
+from datetime import datetime
 
 log_data = []
 
@@ -19,6 +21,13 @@ parts = [
 
 pattern = re.compile(r'\s+'.join(parts)+r'\s*\Z')
 
+#conversion from timestamp to epoch time
+def epoch_time(epoch):
+	date = epoch[1:epoch.find(' ')]
+	d = int(time.mktime(time.strptime(date, "%d/%b/%Y:%H:%M:%S")))
+	return d
+
+
 # Change Apache log items into Python types.
 def pythonized(d):
 	# Clean up the request.
@@ -28,6 +37,10 @@ def pythonized(d):
 	for k in ("user", "referrer", "agent"):
 		if d[k] == "-":
 			d[k] = None
+
+	# Change timestamp to seconds
+	d["time"] = epoch_time(d["time"])
+
          
 	# The size dash becomes 0.
 	if d["size"] == "-":
