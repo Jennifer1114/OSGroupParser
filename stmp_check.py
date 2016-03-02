@@ -19,4 +19,8 @@ dict = []
 for line in sys.stdin:
 	dict.append(eval(line))
 
-print strictly_incr(dict)
+#print strictly_incr(dict)
+
+for l in dict:
+	if strictly_incr(l) > 0:
+		print strictly_incr(l)
