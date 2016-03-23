@@ -5,22 +5,33 @@ import sys
 import time
 from datetime import datetime
 
-def strictly_incr(L):
-	num_errors = 0
-	for index in range(len(L)-1):
-		if (cmp(L[index]['time'], L[index+1]['time']) == 1):
-			print (L[index]['time'], ':', L[index+1]['time'])
-			num_errors = num_errors + 1
-
-	return num_errors
-
 dict = []
+next = str(int(0))
 
 for line in sys.stdin:
 	dict.append(eval(line))
 
-#print strictly_incr(dict)
-
+#give IP addresses unique ID's
 for l in dict:
-	if strictly_incr(l) > 0:
-		print strictly_incr(l)
+	for index in range(len(l)):
+		l[index]['host'] = next
+	next = str(int(next) + 1)
+
+#check if timestamps are in ascending order
+for l in dict:
+	index = 0
+	while index < (len(l)-1):
+		if (cmp(l[index]['time'], l[index+1]['time']) == 1):
+			del l[index]
+		index += 1
+
+#rewrite time to delta timestamp
+for l in dict:
+	index = 0
+	first_time = l[index]['time']
+	for index in range(len(l)):
+		l[index]['time'] -= first_time
+
+
+#write to next file, err_code_check.txt
+sys.stdout.write("\n".join(map(str,dict)) + '\n')

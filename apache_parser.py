@@ -35,15 +35,14 @@ def pythonized(d):
      
 	# Some dashes become None.
 	for k in ("user", "referrer", "agent"):
-		if d[k] == "-":
-			d[k] = None
+		d[k] = "-"
 
 	# Change timestamp to seconds
 	d["time"] = epoch_time(d["time"])
 
          
 	# The size dash becomes 0.
-	if d["size"] == "-":
+	if d["size"] == "-" or d["size"] <= 0:
 		d["size"] = 0
 	else:
 		d["size"] = int(d["size"])
