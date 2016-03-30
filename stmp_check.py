@@ -25,13 +25,27 @@ for l in dict:
 			del l[index]
 		index += 1
 
+#remove empty entries in list
+dict2 = [l for l in dict if l != []]
+
 #rewrite time to delta timestamp
-for l in dict:
+ip_count = 0
+line_count = 0
+
+for l in dict2:
 	index = 0
+	ip_count += 1
 	first_time = l[index]['time']
 	for index in range(len(l)):
 		l[index]['time'] -= first_time
-
+		line_count += 1
 
 #write to next file, err_code_check.txt
-sys.stdout.write("\n".join(map(str,dict)) + '\n')
+sys.stdout.write("\n".join(map(str,dict2)) + '\n')
+
+
+#write statistics to statfile
+f = open('statfile', 'a')
+f.write("Adding data from <stmp_check.py>...\n")
+ip_count = "Line count: " + str(line_count) + "\tIP Address Count: " + str(ip_count) + "\n"
+f.write(ip_count)

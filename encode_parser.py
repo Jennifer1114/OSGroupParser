@@ -16,10 +16,18 @@ dict = sorted(dict, key=itemgetter('host'))
 
 #group list by unique IP address
 result = []
+ip_count = 0
 
 for key, items in groupby(dict, key=itemgetter('host')):
 	result.append(list(items))
+	ip_count += 1
 dict = result
 
 #write as new grouped IP address list
 sys.stdout.write("\n".join(map(str,dict)) + '\n')
+
+#write statistics to statfile
+f = open('statfile', 'a')
+f.write("Adding data from <encode_parser.py...\n")
+ip_count = "Unique IP Address Count:" + str(ip_count) + "\n"
+f.write(ip_count)

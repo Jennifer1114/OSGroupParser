@@ -23,8 +23,11 @@ pattern = re.compile(r'\s+'.join(parts)+r'\s*\Z')
 
 #conversion from timestamp to epoch time
 def epoch_time(epoch):
-	date = epoch[1:epoch.find(' ')]
-	d = int(time.mktime(time.strptime(date, "%d/%b/%Y:%H:%M:%S")))
+	try:
+		date = epoch[1:epoch.find(' ')]
+		d = int(time.mktime(time.strptime(date, "%e/%b/%Y:%H:%M:%S")))
+	except ValueError:
+		d = 0
 	return d
 
 
@@ -49,6 +52,15 @@ def pythonized(d):
      
 	return d
 
+line_count = 0
+
 for line in sys.stdin:
 	log_data.append(pythonized(pattern.match(line).groupdict()))
+	line_count += 1
 sys.stdout.write("\n".join(map(str, log_data)) + '\n')
+
+#write statistics to file
+f = open('statfile', 'w')
+f.write("Adding data from <apache_parser.py>...\n")
+line_count = "Line count: " + str(line_count) + "\n"
+f.write(line_count)
