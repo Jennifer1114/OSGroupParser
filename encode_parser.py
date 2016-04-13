@@ -28,6 +28,7 @@ sys.stdout.write("\n".join(map(str,dict)) + '\n')
 
 #write statistics to statfile
 f = open('statfile', 'a')
-f.write("Adding data from <encode_parser.py...\n")
+f.write("\nAdding data from <encode_parser.py...\n")
+f.write("Task(s) completed - grouped log by unique ip address\n")
 ip_count = "Unique IP Address Count:" + str(ip_count) + "\n"
 f.write(ip_count)

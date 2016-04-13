@@ -62,5 +62,6 @@ sys.stdout.write("\n".join(map(str, log_data)) + '\n')
 #write statistics to file
 f = open('statfile', 'w')
 f.write("Adding data from <apache_parser.py>...\n")
+f.write("Task(s) completed - epoch time conversion, reduce request to only path, remove user, referrer, and agent\n")
 line_count = "Line count: " + str(line_count) + "\n"
 f.write(line_count)

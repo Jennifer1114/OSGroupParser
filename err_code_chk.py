@@ -32,6 +32,7 @@ sys.stdout.write("\n".join(map(str,dict2)) + '\n')
 
 #write statistics to statfile
 f = open('statfile', 'a')
-f.write("Adding data from <err_code_chk.py>...\n")
+f.write("\nAdding data from <err_code_chk.py>...\n")
+f.write("Task(s) completed - obtaining only successful requests\n")
 ip_count = "Line Count: " + str(line_count) + "\tIP Address Count: " + str(ip_count) + "\n"
 f.write(ip_count)

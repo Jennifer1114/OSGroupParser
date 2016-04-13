@@ -46,6 +46,7 @@ sys.stdout.write("\n".join(map(str,dict2)) + '\n')
 
 #write statistics to statfile
 f = open('statfile', 'a')
-f.write("Adding data from <stmp_check.py>...\n")
+f.write("\nAdding data from <stmp_check.py>...\n")
+f.write("Task(s) completed - ensure correct order for timestamps, rewrite as delta timestamp\n")
 ip_count = "Line count: " + str(line_count) + "\tIP Address Count: " + str(ip_count) + "\n"
 f.write(ip_count)
