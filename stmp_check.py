@@ -32,12 +32,19 @@ dict2 = [l for l in dict if l != []]
 ip_count = 0
 line_count = 0
 
+#get min timestamp for comparison
+mins = []
+for l in dict2:
+	mins.append(l[0]['time'])
+min_time = min(mins)
+
+#get count of IP addresses and lines; find min timestamp
 for l in dict2:
 	index = 0
 	ip_count += 1
-	first_time = l[index]['time']
+#	first_time = l[index]['time']
 	for index in range(len(l)):
-		l[index]['time'] -= first_time
+		l[index]['time'] -= min_time
 		line_count += 1
 
 #write to next file, err_code_check.txt

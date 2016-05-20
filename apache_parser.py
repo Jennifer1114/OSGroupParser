@@ -3,7 +3,7 @@
 import re
 import sys
 import time
-from datetime import datetime
+#from datetime import datetime
 
 log_data = []
 
@@ -25,7 +25,7 @@ pattern = re.compile(r'\s+'.join(parts)+r'\s*\Z')
 def epoch_time(epoch):
 	try:
 		date = epoch[1:epoch.find(' ')]
-		d = int(time.mktime(time.strptime(date, "%e/%b/%Y:%H:%M:%S")))
+		d = int(time.mktime(time.strptime(date, '%d/%b/%Y:%H:%M:%S')))
 	except ValueError:
 		d = 0
 	return d

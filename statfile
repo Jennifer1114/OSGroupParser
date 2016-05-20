@@ -8,12 +8,8 @@ Unique IP Address Count:604
 
 Adding data from <stmp_check.py>...
 Task(s) completed - ensure correct order for timestamps, rewrite as delta timestamp
-Line count: 10000	IP Address Count: 604
+Line count: 9971	IP Address Count: 604
 
 Adding data from <err_code_chk.py>...
 Task(s) completed - obtaining only successful requests
-Line Count: 9356	IP Address Count: 567
-
-Adding data from <reduce_path.py>...
-Task(s) completed - reduce path assigns number of accesses to path name
-Line count: 9336	IP Address Count: 567
+Line Count: 9331	IP Address Count: 567
