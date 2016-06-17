@@ -10,28 +10,6 @@ dict = []
 for line in sys.stdin:
 	dict.append(eval(line))
 
-file_mpdict = {}
-
-for l in dict:
-	file_map = {}
-	for index in range(len(l)):
-		key = re.sub(r'\W+','', l[index]['request'])
-		if key == "":
-			file_map[key] = 0
-		else:
-			if key in file_map:
-				file_map[key] += 1
-			else:
-				file_map[key] = 1
-			
-		file_mpdict[key] = file_map[key]
-
-f_map = open('request_map.txt', 'w')
-csv_writer = csv.writer(f_map)
-for k, v in file_mpdict.items():
-	csv_writer.writerow([k, v])
-f_map.close()
-
 for l in dict:
 	index = 0
 	while index < (len(l)-1):
@@ -49,6 +27,7 @@ for l in dict2:
 	ip_count += 1
 	for index in range(len(l)):
 		line_count += 1
+
 
 sys.stdout.write("\n".join(map(str,dict2)) + '\n')
 

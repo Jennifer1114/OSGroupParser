@@ -13,3 +13,7 @@ Line count: 9971	IP Address Count: 604
 Adding data from <err_code_chk.py>...
 Task(s) completed - obtaining only successful requests
 Line Count: 9331	IP Address Count: 567
+
+Adding data from <reduce_path.py>...
+Task(s) completed - reduce path assigns number of accesses to path name
+Line count: 9331	IP Address Count: 567
